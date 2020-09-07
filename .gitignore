@@ -139,3 +139,15 @@ cython_debug/
 
 # Mac Os
 .DS_Store
+
+# Development
+*.sqlite3
+media/
+*.pyc
+*.db
+*.pid
+
+# Migrations
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py

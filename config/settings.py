@@ -45,8 +45,9 @@ THIRD_PARTY_APPS = [
 ]
 
 PROJECT_APPS = [
-    "houses.apps.HousesConfig",
+    "core.apps.CoreConfig",
     "users.apps.UsersConfig",
+    "houses.apps.HousesConfig",
     "conversations.apps.ConversationsConfig",
 ]
 
