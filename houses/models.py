@@ -5,6 +5,7 @@ from core import models as core_models
 class AbstractItem(core_models.TimeStampedModel):
 
     name = models.CharField(max_length=80)
+    subtitle = models.TextField(blank=True)
 
     class Meta:
         abstract = True
@@ -14,7 +15,31 @@ class AbstractItem(core_models.TimeStampedModel):
 
 
 class HouseType(AbstractItem):
-    pass
+
+    class Meta:
+        verbose_name = "House Type"
+
+
+class Amenity(AbstractItem):
+
+    class Meta:
+        verbose_name_plural = "Amenities"
+
+
+class Facility(AbstractItem):
+
+    class Meta:
+        verbose_name_plural = "Facilities"
+
+
+class Photo(core_models.TimeStampedModel):
+
+    caption = models.CharField(max_length=80)
+    file = models.ImageField()
+    house = models.ForeignKey("House", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.caption
 
 
 class House(core_models.TimeStampedModel):
@@ -26,7 +51,10 @@ class House(core_models.TimeStampedModel):
     address = models.CharField(max_length=140)
     bedrooms = models.IntegerField()
     baths = models.IntegerField()
-    house_type = models.ManyToManyField(HouseType, blank=True)
+    house_type = models.ForeignKey(
+        HouseType, on_delete=models.SET_NULL, null=True)
+    amenities = models.ManyToManyField(Amenity, blank=True)
+    facilites = models.ManyToManyField(Facility, blank=True)
     host = models.ForeignKey(
         "users.User", related_name="houses", on_delete=models.CASCADE)
 
