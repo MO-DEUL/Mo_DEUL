@@ -48,7 +48,8 @@ PROJECT_APPS = [
     "core.apps.CoreConfig",
     "users.apps.UsersConfig",
     "houses.apps.HousesConfig",
-    "conversations.apps.ConversationsConfig",
+    "community.apps.CommunityConfig",
+    "apply.apps.ApplyConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
