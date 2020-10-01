@@ -28,9 +28,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # install environment dependencies
 RUN pip3 install --upgrade pip 
-RUN pip3 install pipenv
+
 
 # Install project dependencies
-RUN pipenv install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
