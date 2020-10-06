@@ -1,5 +1,7 @@
 from django.core.management.base import BaseCommand
 from users import models as user_models
+from django_seed import Seed
+import random
 
 
 class Command(BaseCommand):
@@ -19,7 +21,9 @@ class Command(BaseCommand):
         seeder = Seed.seeder()
         seeder.add_entity(
             user_models.User, number, {
-                "is_superhost": False, "is_superuser": False}
+                "is_superuser": False,
+                "age": lambda x: random.radint(19, 80),
+            }
         )
         seeder.execute()
         self.stdout.write(self.style.SUCCESS(
