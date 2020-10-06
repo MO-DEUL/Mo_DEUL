@@ -12,3 +12,11 @@ class Community(core_models.TimeStampedModel):
 
     class Meta:
         verbose_name_plural = 'Communities'
+
+
+class Comment(core_models.TimeStampedModel):
+    writer = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    comment = models.TextField()
+
+    def __str__(self):
+        return self.name
