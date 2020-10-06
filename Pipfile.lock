@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "247c4bb904e3494cf9cb7f6d659f37b1c30f7d82359b9d59431bcf7925ef435a"
+            "sha256": "3813208c156e0997000e1bd9bf6d09e7c4f6b6fb301e3a2983a0bf96cfb64e9c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,6 +32,22 @@
             "index": "pypi",
             "version": "==3.1"
         },
+        "django-countries": {
+            "hashes": [
+                "sha256:64015977a5989bcb0e645007299b19fe8ac117466af375161b26bcfa32ae2808",
+                "sha256:a0f77154ae08cb38a0d65530a399ead5f5837ebf6c74f7576e71bb7acdacca94"
+            ],
+            "index": "pypi",
+            "version": "==6.1.3"
+        },
+        "django-filter": {
+            "hashes": [
+                "sha256:84e9d5bb93f237e451db814ed422a3a625751cbc9968b484ecc74964a8696b06",
+                "sha256:e00d32cebdb3d54273c48f4f878f898dced8d5dfaad009438fe61ebdf535ace1"
+            ],
+            "index": "pypi",
+            "version": "==2.4.0"
+        },
         "django-seed": {
             "hashes": [
                 "sha256:5cdda71dcd51b2e7340e4aec9035d99d7014409a4b11adddbdff17d814968221"
@@ -55,15 +71,13 @@
             "markers": "python_version >= '3.5'",
             "version": "==4.4.0"
         },
-        "mysqlclient": {
+        "markdown": {
             "hashes": [
-                "sha256:3f39855a4ad22805361e782cc4d1010ac74796225fa2d1c03cc16673ccdc983a",
-                "sha256:a6b5648f648b16335e3b1aaec93dc3fcc81a9a661180e306936437cc522c810b",
-                "sha256:edd42ccaa444b00702d5374b2f5f7585c9d0ce201917f15339f1c3cf91c1b1ed",
-                "sha256:fb2f75aea14722390d2d8ddf384ad99da708c707a96656210a7be8af20a2c5e5"
+                "sha256:1fafe3f1ecabfb514a5285fca634a53c1b32a81cb0feb154264d55bf2ff22c17",
+                "sha256:c467cd6233885534bf0fe96e62e3cf46cfc1605112356c4f9981512b8174de59"
             ],
             "index": "pypi",
-            "version": "==2.0.1"
+            "version": "==3.2.2"
         },
         "pillow": {
             "hashes": [

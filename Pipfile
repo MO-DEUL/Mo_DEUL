@@ -8,9 +8,11 @@ verify_ssl = true
 [packages]
 django = "==3.1"
 pillow = "*"
-mysqlclient = "*"
 django-seed = "*"
+django-countries = "*"
 djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.8"
