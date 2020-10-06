@@ -15,4 +15,10 @@ class CommunityAdmin(admin.ModelAdmin):
 
 @admin.register(models.Comment)
 class CommentAdmin(admin.ModelAdmin):
-    pass
+
+    list_filter = ('time',)
+
+    list_display = ('post',
+                    'writer',
+                    'comment',
+                    'time',)
