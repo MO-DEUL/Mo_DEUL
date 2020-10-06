@@ -22,7 +22,7 @@ class Command(BaseCommand):
         seeder.add_entity(
             user_models.User, number, {
                 "is_superuser": False,
-                "age": lambda x: random.radint(19, 80),
+                "age": lambda x: random.randint(19, 80),
             }
         )
         seeder.execute()
