@@ -6,7 +6,7 @@ class Community(core_models.TimeStampedModel):
     writer = models.ForeignKey('users.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     post = models.TextField()
-    time = models.DateTimeField()
+    time = models.DateTimeField(default=None)
 
     def __str__(self):
         return self.title
@@ -20,7 +20,7 @@ class Comment(core_models.TimeStampedModel):
     post = models.ForeignKey(
         'Community', on_delete=models.CASCADE, default=None)
     comment = models.TextField()
-    time = models.DateTimeField()
+    time = models.DateTimeField(default=None)
 
     def __str__(self):
         return self.comment
