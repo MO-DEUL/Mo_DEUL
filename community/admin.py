@@ -18,7 +18,7 @@ class CommentAdmin(admin.ModelAdmin):
 
     list_filter = ('time',)
 
-    list_display = ('post',
+    list_display = ('title',
                     'writer',
                     'comment',
                     'time',)

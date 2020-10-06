@@ -17,7 +17,7 @@ class Community(core_models.TimeStampedModel):
 
 class Comment(core_models.TimeStampedModel):
     writer = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    post = models.ForeignKey(
+    title = models.ForeignKey(
         'Community', on_delete=models.CASCADE, default=None)
     comment = models.TextField()
     time = models.DateTimeField(default=None)
