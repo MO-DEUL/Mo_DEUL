@@ -58,9 +58,15 @@ class House(core_models.TimeStampedModel):
     facilites = models.ManyToManyField(Facility, blank=True)
     host = models.ForeignKey(
         "users.User", related_name="houses", on_delete=models.CASCADE)
+    house_type = models.ForeignKey(
+        "HouseType", related_name="houses", on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.city = str.capitalize(self.city)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("rooms:detail", kwargs={"pk": self.pk})
