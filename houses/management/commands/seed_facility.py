@@ -13,5 +13,5 @@ class Command(BaseCommand):
             "수영장",
         ]
         for f in facilities:
-            facilities.objects.create(name=f)
+            house_models.Facility.objects.create(name=f)
         self.stdout.write(self.style.SUCCESS("Facilities created!"))
