@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from core import models as core_models
 
 
@@ -35,7 +36,7 @@ class Facility(AbstractItem):
 class Photo(core_models.TimeStampedModel):
 
     caption = models.CharField(max_length=80)
-    file = models.ImageField()
+    file = models.ImageField(upload_to="house_photos")
     house = models.ForeignKey("House", on_delete=models.CASCADE)
 
     def __str__(self):
@@ -60,3 +61,6 @@ class House(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("rooms:detail", kwargs={"pk": self.pk})
