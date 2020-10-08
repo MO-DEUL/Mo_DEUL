@@ -4,19 +4,30 @@
 
 ### Run server without Docker
 
-> pipenv shell -> python manage.py runserver
+    pipenv shell -> python manage.py runserver
 
-#### if you need migrate
+> if you need migrate
 
-> python manage.py makemigrations -> python manage.py migrate
+    python manage.py makemigrations -> python manage.py migrate
 
-#### if you want to join admin panel
+> if you want to join admin panel
 
-> python manage.py createsuperuser
+    python manage.py createsuperuser
 
 ### Making FakeDB
 
-> User DB: python manage.py seed_users --number {원하는 수 만큼}
-> Houses DB: 🙅🏻‍♂️🤦🏻‍♂️
-> Amenities DB: python manage.py seed_amenity
-> Facilities DB: python manage.py seed_facility
+> User DB
+
+    python manage.py seed_users --number {원하는 수 만큼}
+
+> Houses DB:
+
+    🙅🏻‍♂️🤦🏻‍♂️
+
+> Amenities DB
+
+    python manage.py seed_amenity
+
+> Facilities DB
+
+    python manage.py seed_facility
