@@ -36,6 +36,7 @@ class Facility(AbstractItem):
 class Photo(core_models.TimeStampedModel):
 
     caption = models.CharField(max_length=80)
+
     file = models.ImageField(upload_to="house_photos")
     house = models.ForeignKey("House", on_delete=models.CASCADE)
 
@@ -58,6 +59,7 @@ class House(core_models.TimeStampedModel):
     facilites = models.ManyToManyField(Facility, blank=True)
     host = models.ForeignKey(
         "users.User", related_name="houses", on_delete=models.CASCADE)
+
     house_type = models.ForeignKey(
         "HouseType", related_name="houses", on_delete=models.SET_NULL, null=True)
 
@@ -70,3 +72,4 @@ class House(core_models.TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("rooms:detail", kwargs={"pk": self.pk})
+

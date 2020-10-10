@@ -5,6 +5,7 @@ from . import models
 @admin.register(models.Community)
 class CommunityAdmin(admin.ModelAdmin):
 
+
     list_filter = ('post',)
 
     list_display = ('title',
