@@ -1,5 +1,4 @@
 from django.core.management import BaseCommand
-from django_seed import Seed
 from houses import models as house_models
 
 
