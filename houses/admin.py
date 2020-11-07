@@ -34,6 +34,8 @@ class HouseAdmin(admin.ModelAdmin):
         ("Last Detail", {"fields": ("host",)}),
     )
 
+    list_display = ("name", "city", "address", "price", "house_type",)
+
 
 @admin.register(models.HouseType)
 class TypeAdmin(admin.ModelAdmin):
