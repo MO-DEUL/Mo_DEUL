@@ -4,7 +4,7 @@ Backend files made with Django for Team Moduel
 
 ![Alt text](logo/logo1.png)
 
-## Dockerfile<hr/>
+## Dockerfile <hr/>
 
 The base image is python:3.8. Set Django version to 3.1 and other libraries(django-seed, django-filter, pillow.....) version is on requirements.txt.
 
@@ -31,10 +31,6 @@ The base image is python:3.8. Set Django version to 3.1 and other libraries(djan
 
     python manage.py seed_users --number 원하는 수 만큼
 
-> Houses DB
-
-    python manage.py seed_houses --number 원하는 수 만큼
-
 > House Type DB
 
     python manage.py seed_houseType
@@ -46,3 +42,7 @@ The base image is python:3.8. Set Django version to 3.1 and other libraries(djan
 > Facilities DB
 
     python manage.py seed_facility
+
+> Houses DB
+
+    python manage.py seed_houses --number 원하는 수 만큼
