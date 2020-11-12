@@ -19,10 +19,13 @@ from django.contrib import admin
 from rest_framework import routers
 from users.views import UserViewSet
 from houses.views import HouseViewSet
+from community.views import CommunityViewSet, CommentViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'houses', HouseViewSet)
+router.register(r'community', CommunityViewSet)
+router.register(r'comments', CommentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
