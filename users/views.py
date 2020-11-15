@@ -6,7 +6,6 @@ from .models import User
 
 
 class UserView(APIView):
-
     # POST /users
     def post(self, request):
         user_serializer = UserSerializer(data=request.data)
