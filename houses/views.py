@@ -14,3 +14,16 @@ class HouseView(APIView):
             return Response(house_serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(house_serializer.error, status=status.HTTP_400_BAD_REQUEST)
+
+    # GET /houses
+    # GET /houses/{houses_id}
+    def get(self, request, **kwargs):
+        if kwargs.get('id') is None:
+            house_queryset = House.objects.all()
+            house_queryset_serializer = HouseSerializer(
+                house_queryset, many=True)
+            return Response(house_queryset_serializer.data, status=status.HTTP_200_OK)
+        else:
+            id = kwargs.get('id')
+            house_serializer = HouseSerializer(House.objects.get(id=id))
+            return Response(house_serializer.data, status=status.HTTP_200_OK)
