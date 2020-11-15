@@ -21,4 +21,5 @@ from django.contrib import admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls'), name='users'),
+    path('houses/', include('houses.urls'), name='houses'),
 ]
