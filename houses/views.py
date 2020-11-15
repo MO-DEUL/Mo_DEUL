@@ -16,7 +16,7 @@ class HouseView(APIView):
             return Response(house_serializer.error, status=status.HTTP_400_BAD_REQUEST)
 
     # GET /houses
-    # GET /houses/{houses_id}
+    # GET /houses/{house_id}
     def get(self, request, **kwargs):
         if kwargs.get('id') is None:
             house_queryset = House.objects.all()
@@ -27,3 +27,19 @@ class HouseView(APIView):
             id = kwargs.get('id')
             house_serializer = HouseSerializer(House.objects.get(id=id))
             return Response(house_serializer.data, status=status.HTTP_200_OK)
+
+    #PUT /houses/{house_id}
+    def put(self, request, **kwargs):
+        if kwargs.get('id') is None:
+            return Response('invalid request', status=status.HTTP_400_BAD_REQUEST)
+        else:
+            id = kwargs.get('id')
+            house_object = House.objects.get(id=id)
+
+            update_house_serializer = HouseSerializer(
+                house_object, data=request.data)
+            if update_house_serializer.is_valid():
+                update_house_serializer.save()
+                return Response(update_house_serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response('invalid request', status=status.HTTP_400_BAD_REQUEST)
