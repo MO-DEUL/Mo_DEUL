@@ -8,7 +8,12 @@ class UserView(APIView):
 
     # POST /users
     def post(self, request):
-        return Response("test ok", status=200)
+        user_serializer = UserSerializer(data=request.data)
+        if user_serializer.is_valid():
+            user_serializer.save()
+            return Response(user_serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(user_serializer.error, status=status.HTTP_400_BAD_REQUEST)
 
     # GET/users
     # GET/users/{user_id}
