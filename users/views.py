@@ -17,8 +17,15 @@ class UserView(APIView):
 
     # GET/users
     # GET/users/{user_id}
-    def get(self, request):
-        return Response("test ok", status=200)
+    def get(self, request, **kwargs):
+        if kwargs.get('id') is None:
+            user_queryset = User.objects.all()
+            user_queryset_serializer = UserSerializer(user_queryset, many=True)
+            return Response(user_queryset_serializer.data, status=status.HTTP_200_OK)
+        else:
+            id = kwargs.get('id')
+            user_serializer = UserSerializer(User.objects.get(id=id))
+            return Response(user_serializer.data, status=status.HTTP_200_OK)
 
     # PUT /users/{user_id}
     def put(self, request):
