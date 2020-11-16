@@ -26,5 +26,19 @@ class CommunityView(APIView):
             community_serializer = CommunitySerializers(Community,objects.get(id=id))
             return Response(community_serializer.data, status=status.HTTP_200_OK)
     
+    # PUT /community/{community_id}
+    def put(self, request, **kwargs):
+        if kwargs.get('id') is None:
+            return Response('invalid request', status=status.HTTP_400_BAD_REQUEST)
+        else:
+            id = kwargs.get('id')
+            community_object = Community.objects.get(id=id)
+
+            update_community_serializer = CommunitySerializers(community_object,data=request.data)
+            if update_community_serializer.is_valid():
+                update_community_serializer.save()
+                return Response(update_community_serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response("invalid request", status=status.HTTP_400_BAD_REQUEST)
 class CommentView():
     
