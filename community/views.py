@@ -61,6 +61,18 @@ class CommentView(APIView):
         else:
             return Response(comment_serializer.error, status=status.HTTP_400_BAD_REQUEST)
 
+    # GET /community/comment
+    # GET /community/comment/{comment_id}
+    def get(self, request, **kwargs):
+        if kwargs.get('id') is None:
+            comment_queryset = Comment.objects.all()
+            comment_queryset_serializer = CommentSerializers(comment_queryset, many=True)
+            return Response(comment_queryset_serializer.data, status=status.HTTP_200_OK)
+        else:
+            id = kwargs.get('id')
+            comment_serializer = CommentSerializers(Comment.objects.get(id=id))
+            return Response(comment_serializer.data, status=status.HTTP_200_OK)
+
     # PUT /community/comment/{comment_id}
     def put(self, request, **kwargs):
         if kwargs.get('id') is None:
