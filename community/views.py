@@ -40,5 +40,16 @@ class CommunityView(APIView):
                 return Response(update_community_serializer.data, status=status.HTTP_200_OK)
             else:
                 return Response("invalid request", status=status.HTTP_400_BAD_REQUEST)
+    
+    # DELETE /community/{community_id}
+    def delete(self, request, **kwargs):
+        if kwargs.get('id') is None:
+            return Response('invalid request', status=status.HTTP_400_BAD_REQUEST)
+        else:
+            id = kwargs.get('id')
+            community_object = Community.objects.get(id=id)
+            community_object.delete()
+            return Response("deleted", status=status.HTTP_200_OK)
+
 class CommentView():
     
