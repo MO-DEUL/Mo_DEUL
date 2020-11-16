@@ -14,6 +14,17 @@ class CommunityView(APIView):
             return Response(community_serializers.data, status=status.HTTP_201_CREATED)
         else:
             return Response(community_serializers.data, status=status.HTTP_400_BAD_REQUEST)
+    # GET /comumnity
+    # GET /community/{community_id}
+    def get(self, request, **kwargs):
+        if kwargs.get('id') is None:
+            community_queryset = Community.objects.all()
+            community_queryset_serializer = CommunitySerializers(community_queryset, many=True)
+            return Response(community_queryset_serializer.data, status=status.HTTP_200_OK)
+        else:
+            id = kwargs.get('id')
+            community_serializer = CommunitySerializers(Community,objects.get(id=id))
+            return Response(community_serializer.data, status=status.HTTP_200_OK)
     
 class CommentView():
     
