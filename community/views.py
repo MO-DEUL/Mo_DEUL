@@ -60,5 +60,18 @@ class CommentView(APIView):
             return Response(comment_serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(comment_serializer.error, status=status.HTTP_400_BAD_REQUEST)
-            
-    
+
+    # PUT /community/comment/{comment_id}
+    def put(self, request, **kwargs):
+        if kwargs.get('id') is None:
+            return Response("invalid request", status=status.HTTP_400_BAD_REQUEST)
+        else:
+            id = kwargs.get('id')
+            comment_object = Comment.objects.get(id=id)
+
+            update_comment_serializer = CommentSerializers(comment_object, data=request.data)
+            if update_comment_serializer.is_valid():
+                update_comment_serializer.save()
+                return Response(update_comment_serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response("invalid request", status=status.HTTP_400_BAD_REQUEST)
