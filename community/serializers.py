@@ -5,16 +5,10 @@ from .models import Community, Comment
 class CommunitySerializers(serializers.ModelSerializer):
     class Meta:
         model = Community
-        fields = ('writer',
-                  'title',
-                  'post',
-                  'time',)
+        fields = '__all__'
 
 
 class CommentSerializers(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ('writer',
-                  'title',
-                  'comment',
-                  'time',)
+        fields = '__all__'
