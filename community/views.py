@@ -51,5 +51,14 @@ class CommunityView(APIView):
             community_object.delete()
             return Response("deleted", status=status.HTTP_200_OK)
 
-class CommentView():
+class CommentView(APIView):
+    # POST /community/comment
+    def post(self, request, **kwargs):
+        comment_serializer = CommentSerializers(data=request.data)
+        if comment_serializer.is_valid():
+            comment_serializer.save()
+            return Response(comment_serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(comment_serializer.error, status=status.HTTP_400_BAD_REQUEST)
+            
     
