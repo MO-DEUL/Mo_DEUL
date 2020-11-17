@@ -1,3 +1,4 @@
+from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -53,3 +54,13 @@ class UserView(APIView):
             user_object = User.objects.get(id=id)
             user_object.delete()
             return Response("deleted", status=status.HTTP_200_OK)
+
+
+class LoginView(View):
+    # GET /users/login
+    def get(self, request):
+        pass
+
+    # POST /users/login
+    def post(self, request):
+        pass
