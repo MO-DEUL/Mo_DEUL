@@ -2,4 +2,4 @@
 
 Service of Finding Sharing House
 
-![Alt text](Backend/logo/logo1.png)
+![Alt text](backend/logo/logo1.png)
