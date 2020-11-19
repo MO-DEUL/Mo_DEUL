@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Auth from '../routes/Auth';
 import Main from '../routes/Main';
 
-export default () => {
+const AppRouter = () => {
   const [isLoggedIn, SetIsLoggedIn] = useState();
   return (
     <Router>
@@ -23,3 +23,5 @@ export default () => {
     </Router>
   );
 };
+
+export default AppRouter;
