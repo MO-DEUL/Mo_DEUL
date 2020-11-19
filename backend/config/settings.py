@@ -40,7 +40,8 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_PARTY_APPS = ["django_countries", "django_seed", "rest_framework"]
+THIRD_PARTY_APPS = ["django_countries",
+                    "django_seed", "rest_framework", "knox", ]
 
 PROJECT_APPS = [
     "core.apps.CoreConfig",
@@ -137,3 +138,9 @@ AUTH_USER_MODEL = "users.User"
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
 APPEND_SLASH = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+}
