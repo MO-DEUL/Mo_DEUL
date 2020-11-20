@@ -2,6 +2,13 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
+class SocialPlatform(models.Model):
+    platform = models.CharField(max_length=20, default=0)
+
+    class Meta:
+        db_table = "social_platform"
+
+
 class User(AbstractUser):
 
     GENDER_MALE = "남성"
@@ -30,6 +37,9 @@ class User(AbstractUser):
         (STATUS_GUEST, "게스트"),
     )
 
+    social = models.ForeignKey(
+        SocialPlatform, on_delete=models.CASCADE, max_length=20, blank=True, default=1)
+    social_login_id = models.CharField(max_length=50, blank=True)
     avatar = models.ImageField(upload_to="avatars", blank=True)
     gender = models.CharField(choices=GENDER_CHOICES,
                               max_length=10, blank=True)
