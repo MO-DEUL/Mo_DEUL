@@ -4,12 +4,14 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from backend.users.serializers import UserSerializer
-from backend.users.models import User
-from backend.houses.serializers import HouseSerializer
-from backend.houses.models import House
-from backend.community.serializers import CommentSerializers, CommunitySerializers
-from backend.community.models import Comment, Community
+from users.serializers import UserSerializer
+from users.models import User
+
+from houses.serializers import HouseSerializer
+from houses.models import House
+
+from community.serializers import CommentSerializers, CommunitySerializers
+from community.models import Comment, Community
 
 
 class UserView(APIView):

@@ -20,6 +20,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('api.urls'), name='api'),
     path('users/', include('users.urls'), name='users'),
     path('houses/', include('houses.urls'), name='houses'),
     path('community/', include('community.urls'), name='community'),
