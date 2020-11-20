@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 
 responseKaKao = (res) => {
@@ -7,6 +6,15 @@ responseKaKao = (res) => {
   this.setState({
     data: res,
   });
+
+  fetch(`${API_URL_LOGIN}/auth/signin/kakao`, {
+    method: 'GET',
+    headers: {
+      Authorization: res.response.access_token,
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => localStorage.setItem('token', res.token), alert('로그인 성공!'));
 };
 
 const Auth = () => {
