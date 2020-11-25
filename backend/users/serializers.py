@@ -3,6 +3,7 @@ from .models import User
 
 
 class TinyUserSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = User
         fields = ('username', "superhost")

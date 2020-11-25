@@ -6,8 +6,8 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("api/v1/users/", include("users.urls")),
-    path("api/v1/houses/", include("houses.urls"))
+    path("api/v1/houses/", include("houses.api.v1.urls")),
+    # path("api/v1/users/", include("users.api.v1.urls")),
 ]
 
 if settings.DEBUG:
