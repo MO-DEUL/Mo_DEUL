@@ -9,4 +9,6 @@ class HouseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = House
-        fields = ('id', 'host', 'name', 'price', 'address')
+        exclude = ()
+        # fields = ('id', 'host', 'name', 'price', 'address')
+        read_only_fields = ("host", 'id', 'created', 'updated')
