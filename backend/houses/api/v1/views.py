@@ -1,16 +1,25 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-
-from houses.serializers import HouseSerializer, BigHouseSerializer
+from rest_framework.view import APIView
+from rest_framework.response import Response
+from rest_framework import status
 from houses.models import House
+from houses.serializers import HouseSerializer
 
 
-class ListHousesView(ListAPIView):
+class HousesView(APIView):
 
-    queryset = House.objects.all()
-    serializer_class = HouseSerializer
+    def get(self, request):
+        houses = House.objects.all()
+        serializer = HouseSerializer(houses, many=True).data
+        return Response(serializer)
 
-
-class SeeHouseView(RetrieveAPIView):
-
-    queryset = House.objects.all()
-    serializer_class = BigHouseSerializer
+    def post(self, request):
+        if not request.user.is_authenticated:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        else:
+            serializer = HouseSerializer(data=request.data)
+            if serializer.is_valid():
+                house = serializer.save(user=request.user)
+                house_serializer = HouseSerializer(house).data
+                return Response(data=house_serializer, status=status.HTTP_200_OK)
+            else:
+                return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
