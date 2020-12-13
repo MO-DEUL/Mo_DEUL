@@ -23,3 +23,13 @@ class HousesView(APIView):
                 return Response(data=house_serializer, status=status.HTTP_200_OK)
             else:
                 return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class HouseView(APIView):
+
+    def get_house(self, pk):
+        try:
+            house = House.objects.get(pk=pk)
+            return house
+        except House.DoesNotExist:
+            return None
