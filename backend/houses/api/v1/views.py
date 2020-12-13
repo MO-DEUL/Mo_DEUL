@@ -41,3 +41,19 @@ class HouseView(APIView):
             return Response(serializer)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def put(self, request):
+        house = self.get_house(pk)
+        if house is not None:
+            if house.user != request.user:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+            serializer = HouseSerializer(
+                house, data=request.data, partial=True)
+            if serializer.is_valid():
+                house = serializer.save()
+                return Response(HouseSerializer(house).data)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response()
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
