@@ -33,3 +33,11 @@ class HouseView(APIView):
             return house
         except House.DoesNotExist:
             return None
+
+    def get(self, request, pk):
+        house = self.get_house(pk)
+        if house is not None:
+            serializer = HouseSerializer(house).data
+            return Response(serializer)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
