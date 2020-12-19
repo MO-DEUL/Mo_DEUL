@@ -19,3 +19,21 @@ class UserView(APIView):
             return Response(UserSerializer(new_user).data)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class MeView(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response(UserSerializer(request.user).data)
+
+    def put(self, request):
+        serializer = UserSerializer(
+            request.user, data=request.data, partial=True
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response()
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
