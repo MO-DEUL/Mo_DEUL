@@ -41,7 +41,7 @@ class MeView(APIView):
 
 class userDetailView(APIView):
 
-    def get(self, request):
+    def get(self, request, pk):
         try:
             user = User.objects.get(pk=pk)
             return Response(UserSerializer(user).data)
