@@ -47,13 +47,3 @@ class userDetailView(APIView):
             return Response(UserSerializer(user).data)
         except User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-
-
-class FavsView(APIView):
-
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        user = request.user
-        serializer = HouseSerializer(user.favs.all(), many=True)
-        return serializer
