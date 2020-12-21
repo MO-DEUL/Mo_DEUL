@@ -3,5 +3,7 @@ from . import views
 
 app_name = 'users'
 urlpatterns = [
-    path('<int:id>/', views.UserView.as_view()),
+    path('', views.UserView.as_view()),
+    path('me/', views.MeView.as_view()),
+    path('<int:pk>', views.userDetailView.as_view()),
 ]
