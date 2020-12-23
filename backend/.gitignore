@@ -154,3 +154,6 @@ media/
 
 # DB
 dbSettings.py
+
+Pipfile
+Pipfile.lock
