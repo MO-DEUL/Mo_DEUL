@@ -157,3 +157,4 @@ dbSettings.py
 
 Pipfile
 Pipfile.lock
+.idea
