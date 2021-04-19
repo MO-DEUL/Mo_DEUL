@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+
+  mysql_db:
+    image: mysql
+    container_name: Mo_deul
+    networks:
+      - app-tier
+    volumes:
+      - ./mysql/db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "oht000813"
+      MYSQL_DATABASE: "Mo_deul"
+      MYSQL_USER: "madoht"
+      MYSQL_PASSWORD: "oht000813"
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+
+  django_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    links:
+      - mysql_db:mysql_db
+    depends_on:
+      - mysql_db
+    networks:
+      - app-tier
+    restart: always
+    volumes:
+      - ./backend
+
+networks:
+  app-tier:
+    driver: bridge

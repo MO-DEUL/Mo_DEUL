@@ -151,3 +151,10 @@ media/
 **/migrations/**
 !**/migrations
 .vscode
+
+# DB
+dbSettings.py
+
+Pipfile
+Pipfile.lock
+.idea/
